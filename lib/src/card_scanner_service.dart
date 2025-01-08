@@ -6,29 +6,22 @@ class CardScannerService {
 
   CardScannerService({required this.masks});
 
-  bool checkLuhn(String ccNum) {
-    if (ccNum.length < 2) {
-      return false;
-    }
-
-    String cNum = ccNum.replaceAll(RegExp(r'\D'), '');
-    int mod = cNum.length % 2;
-    int sum = 0;
-
+  bool checkLuhn(String input) {
     try {
-      for (int pos = cNum.length - 1; pos >= 0; pos--) {
-        int digit = int.parse(cNum[pos]);
-
-        if (pos % 2 == mod) {
-          digit *= 2;
-          if (digit > 9) {
-            digit -= 9;
+      final ccNum = input.replaceAll(RegExp(r'\D'), '');
+      var sum = 0;
+      var isSecond = false;
+      for (var i = ccNum.length - 1; i >= 0; i--) {
+        var d = int.parse(ccNum[i]);
+        if (isSecond) {
+          d *= 2;
+          if (d > 9) {
+            d -= 9;
           }
         }
-
-        sum += digit;
+        sum += d;
+        isSecond = !isSecond;
       }
-
       return sum % 10 == 0;
     } on Exception {
       return false;

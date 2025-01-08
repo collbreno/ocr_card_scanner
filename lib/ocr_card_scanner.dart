@@ -1,7 +1,6 @@
 library ocr_card_scanner;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/card_scanner_mask.dart';
+export 'src/card_scanner_result.dart';
+export 'src/card_scanner_service.dart';
+export 'src/card_scanner_widget.dart';

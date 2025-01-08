@@ -2,10 +2,11 @@ class CardScannerMask {
   final RegExp cvvRegex;
   final RegExp numberRegex;
   final RegExp expirationRegex;
+  final String numberMask;
 
   CardScannerMask({
     required String cvvMask,
-    required String numberMask,
+    required this.numberMask,
   })  : cvvRegex = _maskToRegExp(cvvMask),
         numberRegex = _maskToRegExp(numberMask),
         expirationRegex = RegExp(r'(?<=^| )\d{2}/(\d{2}|\d{4})(?=$| )');

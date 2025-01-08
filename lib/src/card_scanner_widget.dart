@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_scalable_ocr/flutter_scalable_ocr.dart';
-import 'package:ocr_card_scanner/src/card_scanner_result.dart';
-import 'package:ocr_card_scanner/src/card_scanner_service.dart';
+import 'package:ocr_card_scanner/ocr_card_scanner.dart';
 
 class CreditCardScanner extends StatefulWidget {
-  final int min;
+  final int minScans;
   final CardScannerService service;
   final bool useLuhnAlgorithm;
+  final String appBarTitle;
   const CreditCardScanner({
-    this.min = 5,
+    this.minScans = 5,
     this.useLuhnAlgorithm = true,
+    this.appBarTitle = 'Scanning card',
     required this.service,
     super.key,
   });
@@ -22,15 +23,11 @@ class CreditCardScanner extends StatefulWidget {
 class _CreditCardScannerState extends State<CreditCardScanner> {
   late final Map<CardScannerResult, int> _results;
   late bool _popScheduled;
-  late Offset _selectedOffset;
-  static const _horizontalModeOffset = Offset(6, 4);
-  static const _verticalModeOffset = Offset(3, 10);
 
   @override
   void initState() {
     _results = {};
     _popScheduled = false;
-    _selectedOffset = _horizontalModeOffset;
     super.initState();
   }
 
@@ -44,7 +41,7 @@ class _CreditCardScannerState extends State<CreditCardScanner> {
           });
           if ((!widget.useLuhnAlgorithm ||
                   widget.service.checkLuhn(parsed.number)) &&
-              _results[parsed]! > widget.min &&
+              _results[parsed]! > widget.minScans &&
               mounted &&
               !_popScheduled) {
             setState(() {
@@ -61,7 +58,7 @@ class _CreditCardScannerState extends State<CreditCardScanner> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Escanear cartão'),
+        title: Text(widget.appBarTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -72,10 +69,10 @@ class _CreditCardScannerState extends State<CreditCardScanner> {
                 ..style = PaintingStyle.stroke
                 ..strokeWidth = 2.0
                 ..color = const Color.fromARGB(153, 102, 160, 241),
-              boxLeftOff: _selectedOffset.dx,
-              boxBottomOff: _selectedOffset.dy,
-              boxRightOff: _selectedOffset.dx,
-              boxTopOff: _selectedOffset.dy,
+              boxLeftOff: 5,
+              boxBottomOff: 6,
+              boxRightOff: 5,
+              boxTopOff: 6,
               getScannedText: _onScannedText,
             ),
             const SizedBox(height: 16),
