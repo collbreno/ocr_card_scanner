@@ -96,7 +96,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic16);
         expect(result.number, '4220034045768665');
         expect(result.cvv, isNull);
-        expect(result.expiration, isNull);
+        expect(result.expiry, isNull);
       });
 
       test('dot should not work as delimiter', () {
@@ -106,7 +106,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic16);
         expect(result.number, '4220034045768665');
         expect(result.cvv, isNull);
-        expect(result.expiration, isNull);
+        expect(result.expiry, isNull);
       });
 
       test('slash should not work as delimiter', () {
@@ -116,7 +116,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic16);
         expect(result.number, '4220034045768665');
         expect(result.cvv, isNull);
-        expect(result.expiration, isNull);
+        expect(result.expiry, isNull);
       });
     });
 
@@ -130,7 +130,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic16);
         expect(result.number, '4220034045768665');
         expect(result.cvv, isNull);
-        expect(result.expiration, isNull);
+        expect(result.expiry, isNull);
       });
 
       test('generic 16 (order 1)', () {
@@ -142,7 +142,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic16);
         expect(result.number, '4220034045768665');
         expect(result.cvv, '269');
-        expect(result.expiration, '08/29');
+        expect(result.expiry, '08/29');
       });
 
       test('generic 16 (order 2)', () {
@@ -154,7 +154,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic16);
         expect(result.number, '4220034045768665');
         expect(result.cvv, '269');
-        expect(result.expiration, '08/29');
+        expect(result.expiry, '08/29');
       });
 
       test('generic 16 (with trash)', () {
@@ -166,7 +166,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic16);
         expect(result.number, '4220034045768665');
         expect(result.cvv, '269');
-        expect(result.expiration, '08/29');
+        expect(result.expiry, '08/29');
       });
     });
 
@@ -180,7 +180,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.americanExpress);
         expect(result.number, '376067944596704');
         expect(result.cvv, isNull);
-        expect(result.expiration, isNull);
+        expect(result.expiry, isNull);
       });
 
       test('american express (order 1)', () {
@@ -192,7 +192,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.americanExpress);
         expect(result.number, '376067944596704');
         expect(result.cvv, '2979');
-        expect(result.expiration, '02/30');
+        expect(result.expiry, '02/30');
       });
 
       test('american express (order 2)', () {
@@ -204,7 +204,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.americanExpress);
         expect(result.number, '376067944596704');
         expect(result.cvv, '2979');
-        expect(result.expiration, '02/30');
+        expect(result.expiry, '02/30');
       });
 
       test('american express (with trash)', () {
@@ -216,7 +216,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.americanExpress);
         expect(result.number, '376067944596704');
         expect(result.cvv, isNull);
-        expect(result.expiration, '02/30');
+        expect(result.expiry, '02/30');
       });
     });
 
@@ -230,7 +230,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic13);
         expect(result.number, '1234567891011');
         expect(result.cvv, isNull);
-        expect(result.expiration, isNull);
+        expect(result.expiry, isNull);
       });
 
       test('generic 13 (order 1)', () {
@@ -242,7 +242,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic13);
         expect(result.number, '1234567891011');
         expect(result.cvv, '946');
-        expect(result.expiration, '05/30');
+        expect(result.expiry, '05/30');
       });
 
       test('generic 13 (order 2)', () {
@@ -254,7 +254,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.generic13);
         expect(result.number, '1234567891011');
         expect(result.cvv, '946');
-        expect(result.expiration, '05/30');
+        expect(result.expiry, '05/30');
       });
     });
 
@@ -268,7 +268,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.dinnersClub);
         expect(result.number, '36111656780009');
         expect(result.cvv, isNull);
-        expect(result.expiration, isNull);
+        expect(result.expiry, isNull);
       });
 
       test('dinners club (order 1)', () {
@@ -280,7 +280,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.dinnersClub);
         expect(result.number, '36111656780009');
         expect(result.cvv, '946');
-        expect(result.expiration, '05/30');
+        expect(result.expiry, '05/30');
       });
 
       test('dinners club (order 2)', () {
@@ -292,7 +292,7 @@ void main() {
         expect(result!.mask, CardScannerMasks.dinnersClub);
         expect(result.number, '36111656780009');
         expect(result.cvv, '946');
-        expect(result.expiration, '05/30');
+        expect(result.expiry, '05/30');
       });
     });
   });

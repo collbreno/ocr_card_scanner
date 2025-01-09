@@ -1,7 +1,10 @@
 import 'package:ocr_card_scanner/src/card_scanner_mask.dart';
 import 'package:ocr_card_scanner/src/card_scanner_result.dart';
 
+/// The service used to parse the scanned text into card information.
 class CardScannerService {
+  /// The masks accepted when scanning.
+  /// You can pass [CardScannerMasks.all] or define new custom masks.
   final List<CardScannerMask> masks;
 
   CardScannerService({required this.masks});
@@ -53,7 +56,7 @@ class CardScannerService {
         mask: cardMask,
         number: number.replaceAll(' ', ''),
         cvv: cvv,
-        expiration: expiration,
+        expiry: expiration,
       );
     } else {
       return null;

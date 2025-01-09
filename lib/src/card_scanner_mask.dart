@@ -1,3 +1,10 @@
+/// A simple class for defining the pattern that should be accepted as card number
+/// and card verification value.
+/// Can be used to format the card number when writing it into a TextField:
+/// ```setState(() {
+///        _ccNumController.text = MaskTextInputFormatter(mask: result.mask.numberMask)
+///                                 .maskText(result.number);
+///});```
 class CardScannerMask {
   final RegExp cvvRegex;
   final RegExp numberRegex;

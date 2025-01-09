@@ -46,8 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _openScanner() async {
     final result = await showDialog<CardScannerResult>(
       context: context,
-      builder: (context) => CreditCardScanner(
-        useLuhnAlgorithm: true,
+      builder: (context) => CardScannerWidget(
         service: CardScannerService(
           masks: CardScannerMasks.all,
         ),
@@ -60,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             MaskTextInputFormatter(mask: result.mask.numberMask)
                 .maskText(result.number);
         _cvvController.text = result.cvv ?? '';
-        _expiryController.text = result.expiration ?? '';
+        _expiryController.text = result.expiry ?? '';
       });
     }
   }

@@ -3,12 +3,37 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_scalable_ocr/flutter_scalable_ocr.dart';
 import 'package:ocr_card_scanner/ocr_card_scanner.dart';
 
-class CreditCardScanner extends StatefulWidget {
+/// The widget responsible for displaying the camera and making Optical Character Recognition
+/// from the card.
+/// It will return the [CardScannerResult] via popping the Navigator.
+/// It must be used in a separate page or dialog.
+/// Example:
+/// ```final result = await showDialog<CardScannerResult>(
+///        context: context,
+///        builder: (context) => CardScannerWidget(
+///          service: CardScannerService(
+///            masks: CardScannerMasks.all,
+///          ),
+///        ),
+///);```
+class CardScannerWidget extends StatefulWidget {
+  /// Minimum amount of scans needed before returning the [CardScannerResult].
+  /// Greater values means greater confidence, but also more time to proccess.
+  /// Defaults to 5.
   final int minScans;
+
+  /// The service used to parse the scanned text into card information.
   final CardScannerService service;
+
+  /// Whether the card number should be validated using Luhn Algorithm.
+  /// Using true increases the confidence. But some cards may not use this algorithm for validation.
+  /// Defaults to true.
   final bool useLuhnAlgorithm;
+
+  /// The title used in the AppBar of the scanner.
   final String appBarTitle;
-  const CreditCardScanner({
+
+  const CardScannerWidget({
     this.minScans = 5,
     this.useLuhnAlgorithm = true,
     this.appBarTitle = 'Scanning card',
@@ -17,10 +42,10 @@ class CreditCardScanner extends StatefulWidget {
   });
 
   @override
-  State<CreditCardScanner> createState() => _CreditCardScannerState();
+  State<CardScannerWidget> createState() => _CardScannerWidgetState();
 }
 
-class _CreditCardScannerState extends State<CreditCardScanner> {
+class _CardScannerWidgetState extends State<CardScannerWidget> {
   late final Map<CardScannerResult, int> _results;
   late bool _popScheduled;
 

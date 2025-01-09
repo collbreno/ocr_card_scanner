@@ -1,20 +1,28 @@
 import 'package:ocr_card_scanner/src/card_scanner_mask.dart';
 
+/// A class containing all the card information retrieved from scanning.
 class CardScannerResult {
+  /// The payment card number. It is the card identifier.
   final String number;
+
+  /// The mask (or pattern) presented in the card.
   final CardScannerMask mask;
+
+  /// The Card Verification Value. Can be null if not found or recognized.
   final String? cvv;
-  final String? expiration;
+
+  /// The expiry date. Can be null if not found or recognized.
+  final String? expiry;
 
   const CardScannerResult({
     required this.number,
     required this.mask,
     required this.cvv,
-    required this.expiration,
+    required this.expiry,
   });
 
   @override
-  int get hashCode => Object.hash(number, cvv, expiration);
+  int get hashCode => Object.hash(number, cvv, expiry);
 
   @override
   bool operator ==(Object other) {
@@ -22,6 +30,6 @@ class CardScannerResult {
         other.runtimeType == runtimeType &&
         other.number == number &&
         other.cvv == cvv &&
-        other.expiration == expiration;
+        other.expiry == expiry;
   }
 }
