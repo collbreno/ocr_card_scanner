@@ -11,29 +11,45 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# ocr_card_scanner
+A Flutter package to scan credit card details using Optical Character Recognition.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- ✅ Scans card number, expiry date and CVV
+- ✅ Supports horizontal and vertical cards
+- ✅ Uses Luhn Algorithm for number validation (optional)
+- ✅ Supports most of major credit card brands, like Amex, Dinners Club, Visa, Mastercard, Maestro etc
+- 🚀 Great performance and confidence
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Requirements
+Since this package uses [Google ML Kit](https://pub.dev/packages/google_mlkit_commons), check this [requirements](https://github.com/flutter-ml/google_ml_kit_flutter#requirements) before using the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+1. Follow the install guide
+2. Import the library
+   ```dart
+   import 'package:ocr_card_scanner/ocr_card_scanner.dart';
+   ```
+3. Open the card scanner
+   ```dart
+   final result = await showDialog<CardScannerResult>(
+     context: context,
+     builder: (context) => CardScannerWidget(
+       service: CardScannerService(
+         masks: CardScannerMasks.all,
+       ),
+     ),
+   );
+   ```
+4. Use the result
+   ```dart
+   if (result != null && mounted) {
+        setState(() {
+            _ccNumController.text = result.formattedNumber;
+            _cvvController.text = result.cvv ?? '';
+            _expiryController.text = result.expiry ?? '';
+        });
+   }
+   ```

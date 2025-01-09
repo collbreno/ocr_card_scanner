@@ -1,3 +1,4 @@
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:ocr_card_scanner/src/card_scanner_mask.dart';
 
 /// A class containing all the card information retrieved from scanning.
@@ -20,6 +21,11 @@ class CardScannerResult {
     required this.cvv,
     required this.expiry,
   });
+
+  String get formattedNummber {
+    final mask = MaskTextInputFormatter(mask: this.mask.numberMask);
+    return mask.maskText(number);
+  }
 
   @override
   int get hashCode => Object.hash(number, cvv, expiry);
