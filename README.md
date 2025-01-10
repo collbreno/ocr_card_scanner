@@ -22,8 +22,13 @@ A Flutter package to scan credit card details using Optical Character Recognitio
 - ✅ Supports most of major credit card brands, like Amex, Dinners Club, Visa, Mastercard, Maestro etc
 - 🚀 Great performance and confidence
 
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/80cde3d5-ff99-472d-b765-21d2212ceeb5" width="300" />
+</p>
+
+
 ## Requirements
-Since this package uses [Google ML Kit](https://pub.dev/packages/google_mlkit_commons), check this [requirements](https://github.com/flutter-ml/google_ml_kit_flutter#requirements) before using the package.
+Since this package uses [Google ML Kit](https://pub.dev/packages/google_mlkit_commons), check its [requirements](https://pub.dev/packages/google_mlkit_commons#requirements) before using the package.
 
 ## Usage
 
