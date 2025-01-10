@@ -1,5 +1,5 @@
 name: ocr_card_scanner
-description: "A new Flutter package project."
+description: "A Flutter package to scan credit card details using Optical Character Recognition."
 version: 0.0.1
 homepage:
 
